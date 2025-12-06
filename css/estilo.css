@@ -1,0 +1,633 @@
+/**
+ * =============================================
+ * FACULTAD DE CIENCIAS SOCIALES
+ * Examen Final - Diseño Web
+ * =============================================
+ * Este CSS sigue el principio Mobile First
+ * Primero estilos para móviles, luego media queries
+ * para tablets y desktop
+ * =============================================
+ */
+
+/* ==========================================
+   VARIABLES CSS (Custom Properties)
+   ========================================== */
+:root {
+    /* Colores principales */
+    --primary: #0d6efd;
+    --primary-dark: #0a58ca;
+    --secondary: #6c757d;
+    --success: #198754;
+    --info: #0dcaf0;
+    --warning: #ffc107;
+    --danger: #dc3545;
+    
+    /* Colores neutros */
+    --white: #ffffff;
+    --light: #f8f9fa;
+    --dark: #212529;
+    --gray: #6c757d;
+    
+    /* Tipografía */
+    --font-primary: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+    /* Espaciados (Mobile First - más compactos) */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    
+    /* Otros */
+    --border-radius: 0.5rem;
+    --transition: 0.3s ease;
+    --shadow: 0 2px 8px rgba(0,0,0,0.1);
+    --shadow-lg: 0 4px 16px rgba(0,0,0,0.15);
+}
+
+/* ==========================================
+   RESET Y BASE (Mobile First)
+   ========================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px; /* Base para móviles */
+}
+
+body {
+    font-family: var(--font-primary);
+    line-height: 1.6;
+    color: var(--dark);
+    background-color: var(--white);
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ==========================================
+   ACCESIBILIDAD - Skip Link
+   ========================================== */
+.skip-link {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    background-color: var(--primary);
+    color: var(--white);
+    padding: var(--spacing-sm);
+    text-decoration: none;
+    z-index: 9999;
+    transition: var(--transition);
+}
+
+.skip-link:focus {
+    top: 0;
+    outline: 3px solid var(--warning);
+    outline-offset: 2px;
+}
+
+/* ==========================================
+   NAVEGACIÓN (Mobile First)
+   ========================================== */
+.navbar-brand {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.navbar-brand i {
+    font-size: 1.5rem;
+}
+
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+.nav-link {
+    padding: var(--spacing-sm);
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.nav-link:hover,
+.nav-link:focus {
+    color: rgba(255,255,255,0.8);
+    transform: translateX(4px);
+}
+
+.nav-link.active {
+    font-weight: 700;
+}
+
+/* ==========================================
+   CAROUSEL (Optimizado para móvil)
+   ========================================== */
+.carousel-item {
+    height: 300px; /* Altura para móvil */
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel-caption {
+    background: rgba(0,0,0,0.6);
+    padding: var(--spacing-sm);
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.carousel-caption h1,
+.carousel-caption h2 {
+    font-size: 1.5rem; /* Texto más pequeño en móvil */
+    line-height: 1.2;
+}
+
+.carousel-caption p {
+    font-size: 0.9rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+.carousel-caption .btn {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+}
+
+/* ==========================================
+   CARDS (Mobile First)
+   ========================================== */
+.card {
+    border: none;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    margin-bottom: var(--spacing-sm);
+}
+
+.card:hover,
+.card:focus-within {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
+}
+
+.hover-lift {
+    transition: var(--transition);
+}
+
+.hover-lift:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* ==========================================
+   BOTONES (Accesibilidad mejorada)
+   ========================================== */
+.btn {
+    font-weight: 600;
+    border-radius: var(--border-radius);
+    padding: 0.75rem 1.5rem;
+    transition: var(--transition);
+}
+
+.btn:focus {
+    outline: 3px solid var(--warning);
+    outline-offset: 2px;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: var(--primary-dark);
+    border-color: var(--primary-dark);
+}
+
+/* ==========================================
+   FORMULARIOS (Accesibilidad y Usabilidad)
+   ========================================== */
+.form-label {
+    font-weight: 600;
+    margin-bottom: var(--spacing-xs);
+    color: var(--dark);
+}
+
+.form-control,
+.form-select {
+    padding: 0.75rem;
+    border: 2px solid #dee2e6;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+    outline: none;
+}
+
+.form-control:focus-visible,
+.form-select:focus-visible {
+    outline: 3px solid var(--primary);
+    outline-offset: 2px;
+}
+
+/* Estados de validación */
+.was-validated .form-control:valid,
+.form-control.is-valid {
+    border-color: var(--success);
+}
+
+.was-validated .form-control:invalid,
+.form-control.is-invalid {
+    border-color: var(--danger);
+}
+
+.invalid-feedback {
+    display: none;
+    color: var(--danger);
+    font-size: 0.9rem;
+    margin-top: var(--spacing-xs);
+}
+
+.was-validated .form-control:invalid ~ .invalid-feedback,
+.form-control.is-invalid ~ .invalid-feedback {
+    display: block;
+}
+
+.form-text {
+    font-size: 0.85rem;
+    color: var(--gray);
+    margin-top: var(--spacing-xs);
+}
+
+/* Checkboxes y radios */
+.form-check-input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+.form-check-input:checked {
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+
+/* ==========================================
+   TABLAS (Responsive Mobile First)
+   ========================================== */
+.table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.table {
+    font-size: 0.9rem; /* Texto más pequeño en móvil */
+}
+
+.table thead {
+    background-color: var(--primary);
+    color: var(--white);
+}
+
+.table th {
+    font-weight: 600;
+    border-bottom: 2px solid var(--primary-dark);
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(13, 110, 253, 0.1);
+    cursor: pointer;
+}
+
+/* ==========================================
+   ACCORDION (Accesibilidad)
+   ========================================== */
+.accordion-button {
+    font-weight: 600;
+    padding: var(--spacing-sm);
+}
+
+.accordion-button:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: rgba(13, 110, 253, 0.1);
+    color: var(--primary);
+}
+
+/* ==========================================
+   ICONOS Y FEATURES
+   ========================================== */
+.feature-icon {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    border-radius: 50%;
+}
+
+/* ==========================================
+   PAGE HEADER
+   ========================================== */
+.page-header {
+    padding: var(--spacing-md) 0;
+}
+
+.breadcrumb {
+    background-color: transparent;
+    padding: 0;
+    margin-bottom: var(--spacing-sm);
+}
+
+.breadcrumb-item a {
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+}
+
+.breadcrumb-item a:hover,
+.breadcrumb-item a:focus {
+    color: var(--white);
+    text-decoration: underline;
+}
+
+/* ==========================================
+   SCROLL TO TOP BUTTON
+   ========================================== */
+#scrollTop {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    z-index: 1000;
+    box-shadow: var(--shadow-lg);
+    transition: var(--transition);
+}
+
+#scrollTop:hover {
+    transform: translateY(-4px);
+}
+
+#scrollTop:focus {
+    outline: 3px solid var(--warning);
+    outline-offset: 2px;
+}
+
+/* ==========================================
+   ALERTAS (Feedback Visual)
+   ========================================== */
+.alert {
+    border-radius: var(--border-radius);
+    padding: var(--spacing-sm);
+    margin: var(--spacing-sm) 0;
+    border-left: 4px solid;
+}
+
+.alert-success {
+    background-color: #d1e7dd;
+    border-left-color: var(--success);
+    color: #0f5132;
+}
+
+.alert-info {
+    background-color: #cff4fc;
+    border-left-color: var(--info);
+    color: #055160;
+}
+
+/* ==========================================
+   UTILIDADES RESPONSIVE
+   ========================================== */
+.text-mobile-center {
+    text-align: center;
+}
+
+/* ==========================================
+   CONTRASTE Y ACCESIBILIDAD DE COLOR
+   (WCAG AA mínimo 4.5:1 para texto)
+   ========================================== */
+.bg-primary {
+    background-color: var(--primary) !important;
+}
+
+.text-primary {
+    color: var(--primary) !important;
+}
+
+.bg-dark {
+    background-color: var(--dark) !important;
+}
+
+.text-white {
+    color: var(--white) !important;
+}
+
+/* Enlaces con buen contraste */
+a {
+    color: var(--primary);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+a:hover,
+a:focus {
+    color: var(--primary-dark);
+    text-decoration: underline;
+}
+
+a:focus-visible {
+    outline: 3px solid var(--warning);
+    outline-offset: 2px;
+}
+
+/* ==========================================
+   MEDIA QUERIES - TABLET (min-width: 768px)
+   ========================================== */
+@media (min-width: 768px) {
+    html {
+        font-size: 17px;
+    }
+    
+    .carousel-item {
+        height: 400px;
+    }
+    
+    .carousel-caption h1,
+    .carousel-caption h2 {
+        font-size: 2.5rem;
+    }
+    
+    .carousel-caption p {
+        font-size: 1.1rem;
+    }
+    
+    .carousel-caption .btn {
+        font-size: 1rem;
+        padding: 0.75rem 1.5rem;
+    }
+    
+    .navbar-nav {
+        align-items: center;
+    }
+    
+    .nav-link {
+        margin-left: var(--spacing-xs);
+    }
+    
+    .text-mobile-center {
+        text-align: left;
+    }
+    
+    .table {
+        font-size: 1rem;
+    }
+}
+
+/* ==========================================
+   MEDIA QUERIES - DESKTOP (min-width: 992px)
+   ========================================== */
+@media (min-width: 992px) {
+    html {
+        font-size: 18px;
+    }
+    
+    .carousel-item {
+        height: 600px;
+    }
+    
+    .carousel-caption h1 {
+        font-size: 3.5rem;
+    }
+    
+    .carousel-caption h2 {
+        font-size: 3rem;
+    }
+    
+    .carousel-caption p {
+        font-size: 1.25rem;
+    }
+    
+    :root {
+        --spacing-sm: 1.5rem;
+        --spacing-md: 2rem;
+        --spacing-lg: 3rem;
+        --spacing-xl: 4rem;
+    }
+    
+    .nav-link:hover {
+        transform: translateY(-2px);
+    }
+    
+    .container {
+        max-width: 1140px;
+    }
+}
+
+/* ==========================================
+   MEDIA QUERIES - LARGE DESKTOP (min-width: 1200px)
+   ========================================== */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1320px;
+    }
+    
+    .carousel-item {
+        height: 700px;
+    }
+}
+
+/* ==========================================
+   PRINT STYLES
+   ========================================== */
+@media print {
+    .navbar,
+    .carousel,
+    #scrollTop,
+    .btn,
+    footer {
+        display: none !important;
+    }
+    
+    body {
+        font-size: 12pt;
+        color: #000;
+        background: #fff;
+    }
+    
+    a {
+        color: #000;
+        text-decoration: underline;
+    }
+    
+    .page-header {
+        border-bottom: 2px solid #000;
+    }
+}
+
+/* ==========================================
+   DARK MODE (Opcional - Preferencia del usuario)
+   ========================================== */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* ==========================================
+   FOCUS VISIBLE (Navegación por teclado)
+   ========================================== */
+:focus-visible {
+    outline: 3px solid var(--warning);
+    outline-offset: 2px;
+}
+
+*:focus:not(:focus-visible) {
+    outline: none;
+}
+
+/* ==========================================
+   ESTADOS DE CARGA
+   ========================================== */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.spinner-border {
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    vertical-align: text-bottom;
+    border: 0.25em solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: spinner-border 0.75s linear infinite;
+}
+
+@keyframes spinner-border {
+    to {
+        transform: rotate(360deg);
+    }
+}
